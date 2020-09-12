@@ -8,7 +8,7 @@ public class Main{
     }
 }
 /*
-A+B
+1000. A+B
 https://www.acmicpc.net/problem/1000
 
 문제
