@@ -12,7 +12,7 @@ int main() {
 }
 
 /*
-10952. A+B -6
+10953. A+B -6
 https://www.acmicpc.net/problem/10953
 
 문제
