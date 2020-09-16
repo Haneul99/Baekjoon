@@ -19,7 +19,3 @@ list
 ###### 10953. A+B -6
 ###### 11021. A+B -7 
 ###### 11022. A+B -8
-
-
-
-###### all the c++ files are actually c files
