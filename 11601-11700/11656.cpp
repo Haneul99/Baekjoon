@@ -30,8 +30,8 @@ int main() {
 }
 
 /*
-10866. 접미사 배열
-https://www.acmicpc.net/problem/10866
+11656. 접미사 배열
+https://www.acmicpc.net/problem/11656
 
 문제
 접미사 배열은 문자열 S의 모든 접미사를 사전순으로 정렬해 놓은 배열이다.
