@@ -74,7 +74,7 @@ int main() {
 }
 
 /*
-2163. 카드2
+2164. 카드2
 https://www.acmicpc.net/problem/2164
 
 문제
