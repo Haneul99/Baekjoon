@@ -14,7 +14,7 @@ int main() {
 }
 
 /*
-1924. 
+1924. 2007년
 https://www.acmicpc.net/problem/1924
 
 문제
