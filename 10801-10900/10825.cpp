@@ -90,8 +90,8 @@ int main() {
 
 
 /*
-10814. 국영수
-https://www.acmicpc.net/problem/10814
+10825. 국영수
+https://www.acmicpc.net/problem/10825
 
 문제
 도현이네 반 학생 N명의 이름과 국어, 영어, 수학 점수가 주어진다. 이때, 다음과 같은 조건으로 학생의 성적을 정렬하는 프로그램을 작성하시오.
