@@ -29,7 +29,7 @@ int main(void) {
 //0 : 48
 
 /*
-2745. 
+2745. 진법 변환
 https://www.acmicpc.net/problem/2745
 
 문제
