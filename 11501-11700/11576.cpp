@@ -40,7 +40,7 @@ int main(void) {
 
 
 /*
-11576. 
+11576. Base Conversion
 https://www.acmicpc.net/problem/11576
 
 문제
