@@ -5,7 +5,6 @@ int combination[13];
 
 void DFS(int arr[13], int start, int depth) {
 	if (depth == 6) {
-		int result = 0;
 		for (int i = 0; i < 6; i++) {
 			printf("%d ", combination[i]);
 		}
