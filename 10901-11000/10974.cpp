@@ -5,7 +5,6 @@ int arr[9] = { 0, };
 int visit[9];
 
 void Permutation(int start, int depth) {
-	printf("Permutation arr[%d]: %d\n", depth, start);
 	arr[depth] = start;//start에서 값을 설정하기 때문에 arr원래 배열값은 상관없음.
 	if (depth == n) {
 		for (int i = 1; i <= n; i++) {
