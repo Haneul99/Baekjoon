@@ -64,7 +64,7 @@ int main()
 
 
 /*
-4936. 섬의 개수
+4963. 섬의 개수
 https://www.acmicpc.net/problem/4963
 
 문제
