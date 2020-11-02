@@ -65,7 +65,7 @@ int u_bound(int l, int r) {
 		else
 			r = mid;
 	}
-	return r;
+	return r; 
 }
 
 int main() {
