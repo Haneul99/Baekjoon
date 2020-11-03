@@ -21,7 +21,8 @@ void recur(int col, int row, int width) {
 }
 
 int main() {
-	scanf("%d%d%d", &N, &r, &c);/	r += 1;
+	scanf("%d%d%d", &N, &r, &c);
+	r += 1;
 	c += 1;
 	for (int i = 1; i <= N; i++)
 		size *= 2;
