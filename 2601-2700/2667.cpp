@@ -42,7 +42,6 @@ void DFS(int x, int y) {
 			}
 		}//상하좌우에 방문하지 않은 집이 있다면 DFS 수행
 	}
-
 }
 
 int main()
