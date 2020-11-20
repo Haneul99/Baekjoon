@@ -25,7 +25,6 @@ int main() {
 	for (int i = 0; i < n; i++)
 		scanf("%d%d", &conf[i].start, &conf[i].end);
 	sort(conf, conf + n, cmp);
-	int start_time = conf[0].start;
 	int end_time = conf[0].end;
 	for (int i = 1; i < n; i++) {
 		if (conf[i].start >= end_time) {
