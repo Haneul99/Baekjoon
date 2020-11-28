@@ -1,5 +1,5 @@
 # Baekjoon
-list 
+list   
 // 
 
 ###### 1000. A+B -1
