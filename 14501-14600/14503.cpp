@@ -1,12 +1,9 @@
 #include<stdio.h>
-#include<string.h>
 
 int n, m;
 int x, y, dir;
 int ans = 0;
 int map[51][51];
-int visit[51][51] = { 0, };
-
 
 int vectX[4] = { -1,0,1,0 };
 int vectY[4] = { 0,1,0,-1 };
@@ -21,7 +18,6 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			scanf("%d", &map[i][j]);
-			if (map[i][j] == 1) visit[i][j] = 1;
 		}
 	}
 	while (1) {
