@@ -1,36 +1,35 @@
 #include<stdio.h>
 
-int N, target;
-int num[100001];
-int min = 100000000;
-
-void getSum() {
-	for (int i = 1; i <= N; i++) {
-		int sum = 0;
-		for (int j = i; j <= N; j++) {
-			sum += num[j];
-			if (sum >= target) {
-				if (j - i + 1 < min) min = j - i + 1;
-				break;
-			}
-		}	
-	}
-}
-
-
 int main() {
+	int n, S;
+	scanf("%d%d", &n, &S);
+	int nums[100001];
+
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &nums[i]);
+	}
+
+	int left = 0, right = 0;
 	int sum = 0;
-	scanf("%d%d", &N, &target);
-	for (int i = 1; i <= N; i++) {
-		scanf("%d", &num[i]);
-		sum += num[i];
+	int dist = 2 * n;
+	sum += nums[0];
+	while (right < n) {
+		if (sum >= S) {
+			if (right - left < dist) dist = right - left + 1;
+			sum -= nums[left];
+			left++;
+		}
+		else {
+			right++;
+			if (right >= n) continue;
+			sum += nums[right];
+		}
 	}
-	if (sum < target) printf("0\n");
-	else {
-		getSum();
-		printf("%d\n", min);
-	}
+
+	if (dist == 2 * n) printf("0\n");
+	else printf("%d\n", dist);
 }
+
 
 
 /*
