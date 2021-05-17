@@ -9,14 +9,12 @@ int arr[100001];
 int binary(int target, int low, int high) {
 	int flag = 0;
 	if (arr[0] == target) {
-		flag = 1;
-		return flag;
+		return 1;
 	}
 	while (low <= high) {
 		int mid = (low + high) / 2;
 		if (target == arr[mid]) {
-			flag = 1;
-			break;
+			return 1;
 		}
 		else if (target < arr[mid]) {
 			high = mid - 1;
@@ -25,14 +23,12 @@ int binary(int target, int low, int high) {
 			low = mid + 1;
 		}
 	}
-
-	return flag;
+	return 0;
 }
 
 int main() {
 	scanf("%d", &n);
-	for (int i = 0; i < n; i++)
-		scanf("%d", &arr[i]);
+	for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
 	sort(arr, arr + n);
 	
 	int M;
