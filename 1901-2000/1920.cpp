@@ -6,8 +6,8 @@ using namespace std;
 int n;
 int arr[100001];
 
-int binary(int target, int low, int high) {
-	int flag = 0;
+int binary(int target) {
+	int low = 0, high = n;
 	if (arr[0] == target) {
 		return 1;
 	}
@@ -36,7 +36,7 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		int target;
 		scanf("%d", &target);
-		printf("%d\n", binary(target, 0, n));
+		printf("%d\n", binary(target));
 	}
 }
 
