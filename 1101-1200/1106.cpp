@@ -46,7 +46,7 @@ int main() {
 
 
 /*
-1106. 호텔 
+1106. 호텔
 https://www.acmicpc.net/problem/1106
 
 문제
