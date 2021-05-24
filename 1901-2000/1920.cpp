@@ -28,7 +28,9 @@ int binary(int target) {
 
 int main() {
 	scanf("%d", &n);
-	for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &arr[i]);
+	}
 	sort(arr, arr + n);//이진 탐색을 위한 정렬
 	
 	int M;
