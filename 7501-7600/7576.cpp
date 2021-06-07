@@ -1,74 +1,60 @@
 #include <stdio.h>
+#include <vector>
+#include <queue>
 
-typedef struct n {
-	int x;
-	int y;
-}q;//좌표를 저장하기 위한 struct
+using namespace std;
 
-q queue[1000000];//bfs를 수행하기 위한 queue
-int front = 0;
-int rear = 0;
-
-void insert(int _x, int _y) {
-	queue[rear].x = _x;
-	queue[rear].y = _y;
-	rear = rear + 1;
-}
-
-q pop() {
-	q temp = queue[front];
-	front++;
-	return temp;
-}
-
-int isEmpty() {
-	if (rear == front) return 0;
-	return 1;
-}
-//queue 기능 구현
-
-int map[1011][1011];//토마토 배열
-int cnt;//바뀌어야 하는 토마토의 개수
+int vectX[4] = { 1,-1,0,0 };
+int vectY[4] = { 0,0,-1,1 };
 int sizeX, sizeY;//가로 세로 크기
 
-int vectX[4] = { 1,-1,0,0 }; 
-int vectY[4] = { 0,0,-1,1 }; 
-//상하좌우 좌표 이동을 위한 X,Y vertor 배열
+int solution(int sizeX, int sizeY, vector<int> v[1001]) {
 
-int bfs() {
+	queue< pair<int, int> >q;
+
+	int cnt = 0;//바뀌어야 하는 토마토의 개수
+	for (int i = 0; i < sizeX; i++) {
+		for (int j = 0; j < sizeY; j++) {
+			if (v[i][j] == 0) cnt++; //바뀌어야 하는 토마토의 개수
+			else if (v[i][j] == 1) q.push({i, j});//1인 토마토는 큐에 삽입
+		}
+	}
+
 	int x, y;
-	while (isEmpty()) {
-		q temp = pop();//1인 토마토
-		x = temp.x;
-		y = temp.y;
+	while (!q.empty()) {
+		pair<int, int> p = q.front();
+		q.pop();//1인 토마토
+		x = p.first;
+		y = p.second;
 
 		for (int i = 0; i < 4; i++) {
 			int nextX = x + vectX[i];
 			int nextY = y + vectY[i];
 			if (nextX >= 0 && nextX < sizeX && nextY >= 0 && nextY < sizeY) {//적정 범위 내의 좌표인지 체크
-				if (map[nextX][nextY] == 0) {
-					map[nextX][nextY] = map[x][y] + 1;//map[x][y]는 1인 토마토이고, day를 측정해야 하기 때문에 +1을 함. day3에 바뀐 토마토가 바꾸는 토마토는 day4에 바뀌는 것이기 때문.
-					insert(nextX, nextY);//다시 큐에 삽입
+				if (v[nextX][nextY] == 0) {
+					v[nextX][nextY] = v[x][y] + 1;//map[x][y]는 1인 토마토이고, day를 측정해야 하기 때문에 +1을 함. day3에 바뀐 토마토가 바꾸는 토마토는 day4에 바뀌는 것이기 때문.
+					q.push({nextX, nextY});//다시 큐에 삽입
 					cnt--;//0인 토마토의 개수
 				}
 			}
 		}
 	}
-	if (cnt == 0) return map[x][y] - 1;//첫째날에 바뀐 토마토도 1+1이라 2의 값을 가지고 있으므로 -1을 해줘야 며칠이 걸렸는지를 표시하는 것.
+	if (cnt == 0) return v[x][y] - 1;//첫째날에 바뀐 토마토도 1+1이라 2의 값을 가지고 있으므로 -1을 해줘야 며칠이 걸렸는지를 표시하는 것.
 	return -1;
 }
 int main() {
+
 	scanf("%d%d", &sizeY, &sizeX);
+	vector<int> v[1001];
 	for (int i = 0; i < sizeX; i++) {
 		for (int j = 0; j < sizeY; j++) {
-			scanf("%d", &map[i][j]);
-			if (map[i][j] == 0)
-				cnt++; //바뀌어야 하는 토마토의 개수
-			else if (map[i][j] == 1)
-				insert(i, j);//1인 토마토는 큐에 삽입
+			int x;
+			scanf("%d",&x);
+			v[i].push_back(x);
 		}
 	}
-	printf("%d\n", bfs());
+	
+	printf("%d\n", solution(sizeX, sizeY, v));
 }
 
 
