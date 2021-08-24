@@ -1,9 +1,5 @@
 ﻿#include<stdio.h>
 #include<vector>
-#include<iostream>
-#include<string>
-#include<string.h>
-#include<algorithm>
 #include<queue>
 
 using namespace std;
