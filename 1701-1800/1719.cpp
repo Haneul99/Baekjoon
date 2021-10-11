@@ -1,10 +1,5 @@
 ﻿#include<stdio.h>
-#include<string.h>
-#include<vector>
-#include<algorithm>
-#include<queue>
-#include<string>
-#include<set>
+
 #define INF 123456789
 
 using namespace std;
