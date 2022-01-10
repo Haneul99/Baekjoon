@@ -7,10 +7,11 @@ N, K = map(int, input().split())
 
 answer = 0
 
+#N을 이진수로 변경했을 때, 1의 개수가 K개 초과일 때
 while bin(N).count('1') > K:
     idx = bin(N)[::-1].index('1')
-    answer += 2**idx
-    N += 2**idx
+    answer += 2**idx #사온 물병의 개수
+    N += 2**idx #K개 이하로 만들기 위해 더함
     
 print(answer)
 
