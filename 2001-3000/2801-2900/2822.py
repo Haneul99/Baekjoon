@@ -37,4 +37,11 @@ https://www.acmicpc.net/problem/2822
 
 출력
 첫째 줄에 참가자의 총점을 출력한다. 둘째 줄에는 어떤 문제가 최종 점수에 포함되는지를 공백으로 구분하여 출력한다. 출력은 문제 번호가 증가하는 순서이어야 한다.
+
+Python Code
+jumsu = [int(sys.stdin.readline().strip()) for x in range(8)]
+sorted_jumsu = sorted(jumsu)[-5:]
+sorted_idx = [str(jumsu.index(item)+1) for item in sorted_jumsu]
+print(sum(sorted_jumsu))
+print(" ".join(sorted(sorted_idx)))
 '''
