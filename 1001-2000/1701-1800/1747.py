@@ -1,7 +1,7 @@
 import math
 
 def eratos(num):
-    arr = [False, False] + [True] * (num + 1)
+    arr = [False, False] + [True] * (num + 1) # 0, 0, 1, 1 ...
     for i in range(2, int(math.sqrt(num + 1))):
         if arr[i] == True:
             for j in range(i + i, num + 2, i):
@@ -17,11 +17,10 @@ def isPalindrome(num):
 n = int(input())
 arr = eratos(1234567)
 
-size = len(arr)
-for i in range(0,size):
-    if arr[i] >= n:
-        if isPalindrome(arr[i]):
-            print(arr[i])
+for prime in arr:
+    if prime >= n:
+        if isPalindrome(prime):
+            print(prime)
             break
 
     
