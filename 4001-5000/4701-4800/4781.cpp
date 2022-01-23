@@ -13,7 +13,7 @@ int main() {
 	int n, m;
 	float money;
 	scanf("%d %f", &n, &money);
-	m = int(money * 100 + 0.5);
+	m = int(money * 100 + 0.5);//round error? 0.5를 더해야함..
 
 	while (!(n == 0 && m == 0)) {
 		int dp[10001] = { 0 };
@@ -24,11 +24,11 @@ int main() {
 			scanf("%d%f", &arr[i].second, &price);
 			arr[i].first = int(price * 100 + 0.5);
 		}
-		sort(arr + 1, arr + n + 1);
+		sort(arr + 1, arr + n + 1);//arr[i].first -> price 를 기준으로 정렬
 
 		for (int i = 1; i <= m; i++) {
 			for (int j = 1; j <= n; j++) {
-				if (i - arr[j].first < 0) break;
+				if (i - arr[j].first < 0) break;//살 수 없으면 break
 				dp[i] = max(dp[i], dp[i - arr[j].first] + arr[j].second);
 			}
 		}
