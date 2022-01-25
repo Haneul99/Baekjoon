@@ -9,9 +9,9 @@ for num in str:
     sum += nums[ord(num)-ord('A')]
 
 if sum % 2 == 0:
-    print("I'm a winner!")
-else:
     print("You're the winner?")
+else:
+    print("I'm a winner!")
 
 
 
