@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 import java.math.BigInteger;
 
-public class _10425{
+public class Main{
 
     static BigInteger fib[] = new BigInteger[100001];
 
