@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#define MAX_SIZE 1000
+#define MAX_SIZE 10010
 
 typedef struct Stack{
 	int arr[MAX_SIZE];
