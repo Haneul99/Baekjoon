@@ -48,6 +48,7 @@ void getMinComb() {
 	sort(tD.begin(), tD.end());
 	threeD = tD[0];
 }
+// 주사위 눈금의 합이 5가 되는것을 제외하면 되기 때문에, 반복문으로 처리하는 것이 더 좋았을 듯
 
 int main() {
 	ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
