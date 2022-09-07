@@ -9,32 +9,74 @@
 
 using namespace std;
 
+int R, C, ans = 0;
+
 int dx[4] = { 0,0,1,-1 };
 int dy[4] = { 1,-1,0,0 };
 
 char MAP[51][51];
-pair<int, int> dst;
+int visit[51][51];
 queue<pair<int, int>> wq; //물의 위치
 queue<pair<int, int>> bq; //비버의 위치
 
-void BFS() {
+int BFS() {
 
-	
+	while (!wq.empty() || !bq.empty()) {
+		ans++;
+		//일단 물부터 퍼트리기
+		int ws = wq.size();
+		for (int i = 0; i < ws; i++) {
+			int x = wq.front().first;
+			int y = wq.front().second;
+			wq.pop();
 
+			for (int j = 0; j < 4; j++) {
+				int nx = x + dx[j];
+				int ny = y + dy[j];
+				if (nx < 0 || nx > R - 1 || ny < 0 || ny > C - 1) continue;
+				if (MAP[nx][ny] == 'D' || MAP[nx][ny] == 'X' || MAP[nx][ny] == '*') continue;
+				MAP[nx][ny] = '*';
+				wq.push({ nx, ny });
+			}
+		}
+
+		int bs = bq.size();
+		for (int i = 0; i < bs; i++) {
+			int x = bq.front().first;
+			int y = bq.front().second;
+			bq.pop();
+			for (int j = 0; j < 4; j++) {
+				int nx = x + dx[j];
+				int ny = y + dy[j];
+				if (nx < 0 || nx > R - 1 || ny < 0 || ny > C - 1) continue;
+				if (MAP[nx][ny] == '*' || MAP[nx][ny] == 'X') continue;
+				if (visit[nx][ny]) continue;
+				if (MAP[nx][ny] == 'D') return ans;
+				bq.push({ nx, ny });
+				visit[nx][ny] = 1;
+			}
+		}
+		//그리고 가능한 위치로 비버 움직이기
+	}
+	return -1;
 }
 
 int main() {
 	ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-	int R, C; cin >> R >> C;
+	cin >> R >> C;
 	for (int i = 0; i < R; i++) {
 		string s; cin >> s;
 		for (int j = 0; j < C; j++) {
 			MAP[i][j] = s[j];
-			if (s[j] == 'S') bq.push({ i,j });
-			else if (s[j] == 'D') dst = { i,j };
+			if (s[j] == 'S') {
+				bq.push({ i,j });
+			}
 			else if (s[j] == '*') wq.push({ i,j });
 		}
 	}
+
+	if (BFS() == -1) cout << "KAKTUS\n";
+	else cout << ans << '\n';
 }
 
 
