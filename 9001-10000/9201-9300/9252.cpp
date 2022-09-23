@@ -1,55 +1,46 @@
-﻿#include<stdio.h>
-#include<string.h>
+﻿#include<iostream>
 #include<vector>
 #include<algorithm>
-#include<queue>
 #include<string>
-#include<iostream>
-
+#include<math.h>
+#include<limits.h>
+#include<queue>
+#include<memory.h>
+#include<map>
+#define MAX 1010
 
 using namespace std;
 
-
-int getMax(int a, int b) {
-	return a < b ? b : a;
-}
+int DP[MAX][MAX] = { 0, };
 
 int main() {
+	ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+	string A, B; cin >> A >> B;
+	int Alen = A.length(), Blen = B.length();
 
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-
-	string str1;
-	string str2;
-	int dp[1001][1001] = { 0, };
-
-	cin >> str1 >> str2;
-
-	int str1_len = str1.size();
-	int str2_len = str2.size();
-
-	string LCS[1001][1001];
-
-	for (int i = 1; i <= str1_len; i++) {
-		for (int j = 1; j <= str2_len; j++) {
-			if (str1[i - 1] == str2[j - 1]) {
-				dp[i][j] = dp[i - 1][j - 1] + 1;
-				LCS[i][j] = LCS[i][j] + LCS[i - 1][j - 1] + str1[i - 1];
-			}
-			else {
-				dp[i][j] = getMax(dp[i - 1][j], dp[i][j - 1]);
-				if (LCS[i - 1][j].size() > LCS[i][j - 1].size()) {
-					LCS[i][j] = LCS[i - 1][j];
-				}
-				else {
-					LCS[i][j] = LCS[i][j - 1];
-				}
-			}
+	for (int i = 0; i < Alen; i++) {
+		for (int j = 0; j < Blen; j++) {
+			if (A[i] == B[j]) DP[i + 1][j + 1] = DP[i][j] + 1;
+			else DP[i + 1][j + 1] = max(DP[i + 1][j], DP[i][j + 1]);
 		}
-	}//dp로 문자열을 비교해나감. 
-	cout << dp[str1_len][str2_len] << "\n" << LCS[str1_len][str2_len] << '\n';
+	}
+	
+	string ans = "";
+	int row = Alen, col = Blen;
+	while (DP[row][col] > 0) {
+		if (DP[row][col] == DP[row - 1][col]) {
+			row--;
+		}//왼쪽에서 받아온 값인 경우
+		else if (DP[row][col] == DP[row][col - 1]) {
+			col--;
+		}//위에서 받아온 값인 경우
+		else {
+			ans = A[row - 1] + ans;
+			row--; col--;
+		}
+	}
+
+	cout << DP[Alen][Blen] << '\n' << ans << '\n';
 }
 
 
@@ -69,4 +60,9 @@ LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열
 첫째 줄에 입력으로 주어진 두 문자열의 LCS의 길이를, 둘째 줄에 LCS를 출력한다.
 
 LCS가 여러 가지인 경우에는 아무거나 출력하고, LCS의 길이가 0인 경우에는 둘째 줄을 출력하지 않는다.
-*/
+
+string을 배열에 삽입할 경우, 복사하는 시간이 string의 시간만큼 걸리게 됨. 그래서 LCS 배열을 만들어 DP배열처럼 사용할 경우 시간초과 발생.
+그렇기 때문에 최종 값(DP[A.lenght()][B.length()])에서부터 시작해서 DP[i+1][j+1] = DP[i][j]+1 로, 값이 증가한 부분을 찾아나가는 것.
+왼쪽이나 위 중 같은 값이 있다면 그곳에서 받아온 것이기 때문에 탐색 위치를 변경해주고,
+둘 중 같은 값이 없다면 +1 된 것이므로 해당 위치의 문자열을 추가해줌.
+*/ 
